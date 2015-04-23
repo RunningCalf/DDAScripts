@@ -1,4 +1,17 @@
 #!/usr/bin/python
+
+# In stability tests, they need to treat EMMA cube as DDA mode. To do this, we need add following lines in function CDSSReportDefinition::Read(…)
+# in file /COM/SourceCode/DSSReport/CDSSReportDefinition.cpp
+#	void CDSSReportDefinition::Read(…)
+#	{
+#		…
+#		// Treat all emma cube as DDA mode
+#		if (!mEmmaCubeDefnPtr.IsNull())
+#		{
+#			mDatasetServeMode.mValue = DssDatasetServeAsModel;
+#		}
+#	}
+
 import os
 import sys
 import re
